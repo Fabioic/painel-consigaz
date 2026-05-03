@@ -968,159 +968,70 @@ html.dark [class*="filtro-panel"] {
 
 
 
-<style id="map-mobile-expand-size-fix">
+
+
+
+
+
+
+<style id="map-safe-expand-ios-css">
 @media (max-width: 768px) {
-  #map-container.map-mobile-expanded {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    max-width: none !important;
+  #map-container {
+    position: relative !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: height .22s ease, box-shadow .22s ease, border-radius .22s ease;
+  }
+
+  #map-container.map-safe-expanded {
+    height: calc(100vh - 96px) !important;
+    height: calc(100dvh - 96px) !important;
+    min-height: 560px !important;
     max-height: none !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    min-height: 100dvh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 999998 !important;
-    border-radius: 0 !important;
-    background: #fff !important;
-    box-shadow: none !important;
-    overflow: hidden !important;
-    display: block !important;
-  }
-
-  #map-container.map-mobile-expanded .leaflet-container {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    max-width: none !important;
-    max-height: none !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    min-height: 100dvh !important;
-    border-radius: 0 !important;
-  }
-
-  #map-container.map-mobile-expanded .leaflet-map-pane,
-  #map-container.map-mobile-expanded .leaflet-tile-pane,
-  #map-container.map-mobile-expanded .leaflet-overlay-pane,
-  #map-container.map-mobile-expanded .leaflet-marker-pane,
-  #map-container.map-mobile-expanded .leaflet-popup-pane,
-  #map-container.map-mobile-expanded .leaflet-shadow-pane {
-    width: auto !important;
-    height: auto !important;
-  }
-
-  body.map-expanded-lock {
+    border-radius: 14px !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,.24) !important;
+    z-index: 20 !important;
     overflow: hidden !important;
   }
 
-  .map-mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.62);
-    z-index: 999997;
-    display: none;
-  }
-
-  body.map-expanded-lock .map-mobile-overlay {
-    display: block;
-  }
-
-  #map-container .map-expand-hint {
-    position: absolute !important;
-    top: 12px !important;
-    left: 50% !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 1200 !important;
-    padding: 9px 13px !important;
-    border-radius: 999px !important;
-    background: rgba(15,23,42,.88) !important;
-    color: #fff !important;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    line-height: 1 !important;
-    pointer-events: none !important;
-    box-shadow: 0 10px 26px rgba(0,0,0,.28) !important;
-    border: 1px solid rgba(255,255,255,.18) !important;
-  }
-
-  #map-container.map-mobile-expanded .map-expand-hint {
-    display: none !important;
+  #map-container.map-safe-expanded .leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
   }
 
   #map-container .map-close-btn {
     display: none;
   }
 
-  #map-container.map-mobile-expanded .map-close-btn {
+  #map-container.map-safe-expanded .map-close-btn {
     display: flex !important;
-    position: fixed !important;
-    z-index: 2147483647 !important;
-    top: calc(14px + env(safe-area-inset-top)) !important;
-    right: calc(14px + env(safe-area-inset-right)) !important;
-    width: 46px !important;
-    height: 46px !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 42px !important;
+    height: 42px !important;
     border-radius: 999px !important;
-    background: rgba(15,23,42,.96) !important;
+    background: rgba(15,23,42,.94) !important;
     color: #fff !important;
-    font-size: 26px !important;
+    border: 1px solid rgba(255,255,255,.24) !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
-    border: 1px solid rgba(255,255,255,.22) !important;
-    box-shadow: 0 12px 34px rgba(0,0,0,.42) !important;
+    line-height: 1 !important;
     align-items: center !important;
     justify-content: center !important;
+    z-index: 9999 !important;
+    box-shadow: 0 10px 26px rgba(0,0,0,.36) !important;
   }
 
-  #map-container.map-mobile-expanded .leaflet-control-attribution {
+  #map-container.map-safe-expanded .leaflet-control-attribution {
     display: none !important;
   }
 
-  #map-container.map-mobile-expanded .leaflet-control,
-  #map-container.map-mobile-expanded .leaflet-bottom,
-  #map-container.map-mobile-expanded .leaflet-top {
+  #map-container.map-safe-expanded .leaflet-top,
+  #map-container.map-safe-expanded .leaflet-bottom,
+  #map-container.map-safe-expanded .leaflet-control {
     z-index: 500 !important;
-  }
-}
-</style>
-
-
-<style id="map-mobile-clean-action-css">
-@media (max-width: 768px) {
-  #map-container {
-    cursor: pointer;
-    transition: transform .16s ease, box-shadow .16s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  #map-container:active {
-    transform: scale(.995);
-  }
-
-  #map-container.map-mobile-expanded {
-    animation: mapExpandFade .16s ease-out;
-    cursor: default;
-    transform: none !important;
-  }
-
-  #map-container .map-expand-hint {
-    display: none !important;
-  }
-
-  @keyframes mapExpandFade {
-    from {
-      opacity: .92;
-      transform: scale(.985);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
   }
 }
 </style>
@@ -2075,115 +1986,70 @@ document.addEventListener('DOMContentLoaded', function () { updF(); render(); })
 
 
 
-<script id="map-mobile-expand-js">
-(function(){
-  var originalStyle = null;
-  var originalClass = null;
 
+
+
+<script id="map-safe-expand-ios-js">
+(function(){
   function isMobileWidth() {
     return window.innerWidth <= 768;
   }
 
-  function fireResize() {
+  function getMapInstance() {
     try {
-      if (typeof Event === 'function') {
-        window.dispatchEvent(new Event('resize'));
-      } else {
-        var evt = document.createEvent('UIEvents');
-        evt.initUIEvent('resize', true, false, window, 0);
-        window.dispatchEvent(evt);
-      }
+      if (window.map && typeof window.map.invalidateSize === 'function') return window.map;
+      if (window.MAP && typeof window.MAP.invalidateSize === 'function') return window.MAP;
+      if (window.leafMap && typeof window.leafMap.invalidateSize === 'function') return window.leafMap;
+      if (window.leafletMap && typeof window.leafletMap.invalidateSize === 'function') return window.leafletMap;
     } catch(e) {}
+    return null;
   }
 
-  function getLeafletElement() {
-    var c = document.getElementById('map-container');
-    if (!c) return null;
-    var l = c.querySelector('.leaflet-container');
-    return l || c;
-  }
-
-  function forceSizes() {
-    var c = document.getElementById('map-container');
-    var l = getLeafletElement();
-    if (!c || !l) return;
-
-    if (c.className.indexOf('map-mobile-expanded') >= 0) {
-      c.style.width = window.innerWidth + 'px';
-      c.style.height = window.innerHeight + 'px';
-
-      l.style.width = window.innerWidth + 'px';
-      l.style.height = window.innerHeight + 'px';
-
-      var panes = c.querySelectorAll('.leaflet-pane');
-      for (var i = 0; i < panes.length; i++) {
-        panes[i].style.width = '';
-        panes[i].style.height = '';
-      }
-    }
-  }
-
-  function refreshLeaflet() {
-    forceSizes();
-
+  function refreshMap() {
     try {
-      if (window.map && typeof window.map.invalidateSize === 'function') {
-        window.map.invalidateSize(true);
-      }
-      if (window.MAP && typeof window.MAP.invalidateSize === 'function') {
-        window.MAP.invalidateSize(true);
-      }
-      if (window.leafletMap && typeof window.leafletMap.invalidateSize === 'function') {
-        window.leafletMap.invalidateSize(true);
+      var m = getMapInstance();
+      if (m) {
+        setTimeout(function(){ m.invalidateSize(true); }, 80);
+        setTimeout(function(){ m.invalidateSize(true); }, 280);
+        setTimeout(function(){ m.invalidateSize(true); }, 650);
       }
     } catch(e) {}
 
-    fireResize();
-    forceSizes();
+    try {
+      if (typeof Event === 'function') window.dispatchEvent(new Event('resize'));
+    } catch(e) {}
   }
 
-  function repeatedRefresh() {
-    refreshLeaflet();
-    setTimeout(refreshLeaflet, 60);
-    setTimeout(refreshLeaflet, 150);
-    setTimeout(refreshLeaflet, 350);
-    setTimeout(refreshLeaflet, 800);
-  }
-
-  function enableMapMobileExpand() {
+  function enableSafeMapExpand() {
     var container = document.getElementById('map-container');
     if (!container) return;
 
-    if (container.getAttribute('data-map-expand-ready') === '1') return;
-    container.setAttribute('data-map-expand-ready', '1');
+    if (container.getAttribute('data-safe-expand-ready') === '1') return;
+    container.setAttribute('data-safe-expand-ready', '1');
 
     if (!container.style.position) container.style.position = 'relative';
-
-    var overlay = document.createElement('div');
-    overlay.className = 'map-mobile-overlay';
-    overlay.id = 'mapMobileOverlay';
-    document.body.appendChild(overlay);
 
     var closeBtn = document.createElement('button');
     closeBtn.type = 'button';
     closeBtn.className = 'map-close-btn';
-    closeBtn.id = 'mapCloseBtn';
-    closeBtn.setAttribute('aria-label', 'Fechar mapa');
+    closeBtn.setAttribute('aria-label', 'Fechar mapa ampliado');
     closeBtn.innerHTML = '&times;';
     container.appendChild(closeBtn);
-function openMap(e) {
+
+    function openMap(e) {
       if (!isMobileWidth()) return;
-      if (container.className.indexOf('map-mobile-expanded') >= 0) return;
+      if (container.className.indexOf('map-safe-expanded') >= 0) return;
 
-      originalStyle = container.getAttribute('style') || '';
-      originalClass = container.className || '';
+      container.className += ' map-safe-expanded';
+      refreshMap();
 
-      container.className += ' map-mobile-expanded';
-      if (document.body.className.indexOf('map-expanded-lock') < 0) {
-        document.body.className += ' map-expanded-lock';
+      try {
+        setTimeout(function(){
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+      } catch(err) {
+        try { container.scrollIntoView(true); } catch(e2) {}
       }
-
-      repeatedRefresh();
 
       if (e) {
         e.preventDefault();
@@ -2192,14 +2058,8 @@ function openMap(e) {
     }
 
     function closeMap(e) {
-      if (originalClass !== null) container.className = originalClass;
-      else container.className = container.className.replace(/\s?map-mobile-expanded/g, '');
-
-      if (originalStyle !== null) container.setAttribute('style', originalStyle);
-
-      document.body.className = document.body.className.replace(/\s?map-expanded-lock/g, '');
-
-      repeatedRefresh();
+      container.className = container.className.replace(/\s?map-safe-expanded/g, '');
+      refreshMap();
 
       if (e) {
         e.preventDefault();
@@ -2213,8 +2073,8 @@ function openMap(e) {
 
       var t = e.target;
       while (t && t !== container) {
-        var c = ' ' + (typeof t.className === 'string' ? t.className : '') + ' ';
-        if (c.indexOf(' leaflet-popup ') >= 0 || c.indexOf(' map-close-btn ') >= 0) return;
+        var cls = ' ' + (typeof t.className === 'string' ? t.className : '') + ' ';
+        if (cls.indexOf(' leaflet-popup ') >= 0 || cls.indexOf(' map-close-btn ') >= 0) return;
         t = t.parentNode;
       }
 
@@ -2222,30 +2082,27 @@ function openMap(e) {
     }, false);
 
     closeBtn.addEventListener('click', closeMap, false);
-    overlay.addEventListener('click', closeMap, false);
-
-    document.addEventListener('keydown', function(e){
-      e = e || window.event;
-      if (e.key === 'Escape' || e.keyCode === 27) closeMap(e);
-    }, false);
 
     window.addEventListener('orientationchange', function(){
-      setTimeout(repeatedRefresh, 250);
+      setTimeout(refreshMap, 350);
     }, false);
 
     window.addEventListener('resize', function(){
-      if (!isMobileWidth() && container.className.indexOf('map-mobile-expanded') >= 0) closeMap();
-      else if (container.className.indexOf('map-mobile-expanded') >= 0) repeatedRefresh();
+      if (!isMobileWidth() && container.className.indexOf('map-safe-expanded') >= 0) {
+        closeMap();
+      } else {
+        refreshMap();
+      }
     }, false);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', enableMapMobileExpand);
+    document.addEventListener('DOMContentLoaded', enableSafeMapExpand);
   } else {
-    enableMapMobileExpand();
+    enableSafeMapExpand();
   }
 
-  window.addEventListener('load', enableMapMobileExpand);
+  window.addEventListener('load', enableSafeMapExpand);
 })();
 </script>
 
